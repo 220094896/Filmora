@@ -1,0 +1,57 @@
+.hero {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.75)
+    ),
+    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba')
+    center/cover;
+}
+
+.hero-content {
+  color: white;
+  max-width: 650px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.gold-text {
+  color: #c9a227;
+  font-weight: 600;
+}
+
+.btn-gold {
+  background: #c9a227;
+  border: none;
+  color: white;
+}
+
+.movie-card {
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  height: 100%;
+  transition: 0.2s;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 20px;
+}

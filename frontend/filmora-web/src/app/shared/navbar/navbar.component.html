@@ -1,0 +1,142 @@
+<nav class="navbar navbar-expand-lg filmora-navbar">
+
+  <div class="container">
+
+    <a
+      class="navbar-brand filmora-logo"
+      routerLink="/"
+    >
+      FILMORA
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarContent"
+    >
+
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}"
+          >
+            Home
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/movies"
+            routerLinkActive="active"
+          >
+            Movies
+          </a>
+        </li>
+
+        @if (authService.isLoggedIn()) {
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/rentals"
+              routerLinkActive="active"
+            >
+              My Rentals
+            </a>
+          </li>
+
+        }
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            routerLink="/cart"
+            routerLinkActive="active"
+          >
+
+            Cart
+
+            @if (cartService.getCount() > 0) {
+
+              <span class="cart-badge">
+                {{ cartService.getCount() }}
+              </span>
+
+            }
+
+          </a>
+
+        </li>
+
+        @if (authService.isAdmin()) {
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link gold-link"
+              routerLink="/admin"
+              routerLinkActive="active"
+            >
+              Admin
+            </a>
+
+          </li>
+
+        }
+
+        @if (!authService.isLoggedIn()) {
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/login"
+            >
+              Login
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="btn btn-gold ms-lg-2"
+              routerLink="/register"
+            >
+              Register
+            </a>
+          </li>
+
+        } @else {
+
+          <li class="nav-item">
+
+            <button
+              class="btn btn-outline-light ms-lg-2"
+              (click)="logout()"
+            >
+              Logout
+            </button>
+
+          </li>
+
+        }
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>

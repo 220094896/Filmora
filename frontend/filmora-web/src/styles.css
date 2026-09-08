@@ -1,0 +1,61 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --filmora-gold: #c9a227;
+  --filmora-dark: #343434;
+  --filmora-grey: #6c6c6c;
+  --filmora-light: #f5f5f5;
+  --filmora-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background: var(--filmora-light);
+
+  color: #222;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn-gold {
+  background: var(--filmora-gold);
+  border: 1px solid var(--filmora-gold);
+  color: white;
+}
+
+.btn-gold:hover {
+  background: #a98618;
+  border-color: #a98618;
+  color: white;
+}
+
+.gold-text {
+  color: var(--filmora-gold);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--filmora-gold);
+  box-shadow:
+    0 0 0 0.2rem
+    rgba(201, 162, 39, 0.2);
+}

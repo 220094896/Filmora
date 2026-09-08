@@ -1,0 +1,377 @@
+<section class="container py-5">
+
+  <div class="mb-5">
+
+    <p class="gold-text">
+      ADMINISTRATION
+    </p>
+
+    <h1>
+      Movie Management
+    </h1>
+
+    <p class="text-muted">
+      Add, edit and remove movies from Filmora.
+    </p>
+
+  </div>
+
+
+  @if (message) {
+
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+
+  }
+
+
+  @if (error) {
+
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+
+  }
+
+
+  <!-- MOVIE FORM -->
+
+  <div class="admin-form mb-5">
+
+    <h3>
+
+      @if (editing) {
+        Edit Movie
+      } @else {
+        Add New Movie
+      }
+
+    </h3>
+
+    <hr>
+
+
+    <form
+      (ngSubmit)="submitMovie()"
+    >
+
+      <div class="row g-3">
+
+        <div class="col-md-6">
+
+          <label class="form-label">
+            Title *
+          </label>
+
+          <input
+            class="form-control"
+            name="title"
+            [(ngModel)]="movieForm.title"
+            required
+          >
+
+        </div>
+
+
+        <div class="col-md-6">
+
+          <label class="form-label">
+            Genre ID *
+          </label>
+
+          <input
+            class="form-control"
+            name="genreId"
+            [(ngModel)]="movieForm.genreId"
+            placeholder="MongoDB Genre ID"
+            required
+          >
+
+        </div>
+
+
+        <div class="col-12">
+
+          <label class="form-label">
+            Description *
+          </label>
+
+          <textarea
+            class="form-control"
+            name="description"
+            rows="3"
+            [(ngModel)]="movieForm.description"
+            required
+          ></textarea>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Release Year
+          </label>
+
+          <input
+            type="number"
+            class="form-control"
+            name="releaseYear"
+            [(ngModel)]="movieForm.releaseYear"
+          >
+
+        </div>
+
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Director
+          </label>
+
+          <input
+            class="form-control"
+            name="director"
+            [(ngModel)]="movieForm.director"
+          >
+
+        </div>
+
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Duration (minutes)
+          </label>
+
+          <input
+            type="number"
+            class="form-control"
+            name="duration"
+            [(ngModel)]="movieForm.duration"
+          >
+
+        </div>
+
+
+        <div class="col-md-6">
+
+          <label class="form-label">
+            Cast
+          </label>
+
+          <input
+            class="form-control"
+            name="cast"
+            [(ngModel)]="movieForm.cast"
+            placeholder="Actor 1, Actor 2, Actor 3"
+          >
+
+        </div>
+
+
+        <div class="col-md-3">
+
+          <label class="form-label">
+            Rating
+          </label>
+
+          <input
+            type="number"
+            min="0"
+            max="10"
+            step="0.1"
+            class="form-control"
+            name="rating"
+            [(ngModel)]="movieForm.rating"
+          >
+
+        </div>
+
+
+        <div class="col-md-3">
+
+          <label class="form-label">
+            Rental Price
+          </label>
+
+          <input
+            type="number"
+            class="form-control"
+            name="rentalPrice"
+            [(ngModel)]="movieForm.rentalPrice"
+          >
+
+        </div>
+
+
+        <div class="col-md-8">
+
+          <label class="form-label">
+            Image URL
+          </label>
+
+          <input
+            class="form-control"
+            name="image"
+            [(ngModel)]="movieForm.image"
+          >
+
+        </div>
+
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Total Copies
+          </label>
+
+          <input
+            type="number"
+            min="1"
+            class="form-control"
+            name="totalCopies"
+            [(ngModel)]="movieForm.totalCopies"
+          >
+
+        </div>
+
+
+        <div class="col-12">
+
+          <button
+            type="submit"
+            class="btn btn-gold me-2"
+            [disabled]="loading"
+          >
+
+            @if (editing) {
+              Update Movie
+            } @else {
+              Add Movie
+            }
+
+          </button>
+
+
+          @if (editing) {
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="resetForm()"
+            >
+              Cancel
+            </button>
+
+          }
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- MOVIE TABLE -->
+
+  <div class="table-responsive">
+
+    <table class="table table-hover align-middle">
+
+      <thead>
+
+        <tr>
+
+          <th>Movie</th>
+
+          <th>Genre</th>
+
+          <th>Price</th>
+
+          <th>Copies</th>
+
+          <th>Actions</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        @for (
+          movie of movies;
+          track movie._id
+        ) {
+
+          <tr>
+
+            <td>
+
+              <div class="d-flex align-items-center gap-3">
+
+                <img
+                  [src]="
+                    movie.image ||
+                    'assets/movie-placeholder.jpg'
+                  "
+                  class="table-poster"
+                >
+
+                <strong>
+                  {{ movie.title }}
+                </strong>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              {{ movie.genreId.name }}
+            </td>
+
+
+            <td>
+              R{{ movie.rentalPrice }}
+            </td>
+
+
+            <td>
+              {{ movie.availableCopies }}/{{ movie.totalCopies }}
+            </td>
+
+
+            <td>
+
+              <button
+                class="btn btn-sm btn-outline-dark me-2"
+                (click)="editMovie(movie)"
+              >
+                Edit
+              </button>
+
+              <button
+                class="btn btn-sm btn-outline-danger"
+                (click)="deleteMovie(movie._id)"
+              >
+                Delete
+              </button>
+
+            </td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>

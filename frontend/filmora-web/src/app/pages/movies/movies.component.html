@@ -1,0 +1,124 @@
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <p class="gold-text">FILMORA COLLECTION</p>
+
+    <h1>Browse Movies</h1>
+  </div>
+
+  <div class="search-box mb-4">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search movies..."
+        [(ngModel)]="search"
+        (keyup.enter)="searchMovies()"
+      />
+
+      <button class="btn btn-dark" (click)="searchMovies()">Search</button>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <button class="btn btn-outline-dark me-2 mb-2" (click)="filterGenre('')">
+      All
+    </button>
+
+    <button
+      class="btn btn-outline-dark me-2 mb-2"
+      (click)="filterGenre('Action')"
+    >
+      Action
+    </button>
+
+    <button
+      class="btn btn-outline-dark me-2 mb-2"
+      (click)="filterGenre('Comedy')"
+    >
+      Comedy
+    </button>
+
+    <button
+      class="btn btn-outline-dark me-2 mb-2"
+      (click)="filterGenre('Drama')"
+    >
+      Drama
+    </button>
+
+    <button
+      class="btn btn-outline-dark me-2 mb-2"
+      (click)="filterGenre('Horror')"
+    >
+      Horror
+    </button>
+
+    <button
+      class="btn btn-outline-dark me-2 mb-2"
+      (click)="filterGenre('Romance')"
+    >
+      Romance
+    </button>
+
+    <button
+      class="btn btn-outline-dark mb-2"
+      (click)="filterGenre('Science Fiction')"
+    >
+      Sci-Fi
+    </button>
+  </div>
+
+  @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border"></div>
+    </div>
+  }
+
+  @if (error) {
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+  }
+
+  @if (!loading && movies.length === 0) {
+    <div class="text-center py-5">
+      <h4>No movies found</h4>
+
+      <p class="text-muted">Try another search or genre.</p>
+    </div>
+  }
+
+  <div class="row g-4">
+    @for (movie of movies; track movie._id) {
+      <div class="col-sm-6 col-lg-4">
+        <div class="movie-card">
+          <img
+            [src]="movie.image || 'assets/movie-placeholder.jpg'"
+            [alt]="movie.title"
+          />
+
+          <div class="p-3">
+            <h5>
+              {{ movie.title }}
+            </h5>
+
+            <p class="text-muted">
+              {{ movie.genreId.name }}
+              •
+              {{ movie.releaseYear }}
+            </p>
+
+            <p>⭐ {{ movie.rating }}</p>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <strong class="gold-text"> R{{ movie.rentalPrice }} </strong>
+
+              <a [routerLink]="['/movies', movie._id]" class="btn btn-dark">
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

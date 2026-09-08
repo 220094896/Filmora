@@ -1,0 +1,30 @@
+.gold-text {
+  color: #c9a227;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.summary {
+  background: #f5f5f5;
+  padding: 25px;
+  border-top: 4px solid #c9a227;
+}
+
+.btn-gold {
+  background: #c9a227;
+  color: white;
+  border: none;
+}

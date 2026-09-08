@@ -1,0 +1,121 @@
+<section class="hero">
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <p class="gold-text">
+        WELCOME TO FILMORA
+      </p>
+
+      <h1>
+        DISCOVER YOUR NEXT
+        <br>
+        GREAT MOVIE
+      </h1>
+
+      <p>
+        Browse our classic collection and
+        rent your favourite movies.
+      </p>
+
+      <a
+        routerLink="/movies"
+        class="btn btn-gold btn-lg"
+      >
+        Browse Movies
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="container py-5">
+
+  <div class="section-heading">
+
+    <p class="gold-text">
+      OUR COLLECTION
+    </p>
+
+    <h2>
+      Featured Movies
+    </h2>
+
+  </div>
+
+
+  @if (loading) {
+
+    <div class="text-center py-5">
+
+      <div class="spinner-border"></div>
+
+    </div>
+
+  }
+
+
+  @if (!loading && movies.length === 0) {
+
+    <div class="alert alert-secondary">
+      No movies available.
+    </div>
+
+  }
+
+
+  <div class="row g-4">
+
+    @for (movie of movies; track movie._id) {
+
+      <div class="col-md-6 col-lg-4">
+
+        <div class="movie-card">
+
+          <img
+            [src]="movie.image || 'assets/movie-placeholder.jpg'"
+            [alt]="movie.title"
+          >
+
+          <div class="movie-info">
+
+            <h5>
+              {{ movie.title }}
+            </h5>
+
+            <p class="text-muted">
+              {{ movie.genreId.name }}
+              •
+              {{ movie.releaseYear }}
+            </p>
+
+            <div class="d-flex justify-content-between">
+
+              <strong class="gold-text">
+                R{{ movie.rentalPrice }}
+              </strong>
+
+              <a
+                [routerLink]="['/movies', movie._id]"
+                class="btn btn-dark btn-sm"
+              >
+                View
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>
