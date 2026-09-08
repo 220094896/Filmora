@@ -1,0 +1,45 @@
+.filmora-navbar {
+  background: #343434;
+  padding: 15px 0;
+}
+
+.filmora-logo {
+  color: #c9a227;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.nav-link {
+  color: white;
+  margin: 0 8px;
+  transition: 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #c9a227;
+}
+
+.gold-link {
+  color: #c9a227;
+}
+
+.btn-gold {
+  background: #c9a227;
+  color: white;
+  border: none;
+}
+
+.btn-gold:hover {
+  background: #a98618;
+  color: white;
+}
+
+.cart-badge {
+  background: #c9a227;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 11px;
+}

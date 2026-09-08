@@ -1,0 +1,26 @@
+.gold-text {
+  color: #c9a227;
+  font-weight: 600;
+}
+
+.admin-form {
+  background: #f5f5f5;
+  padding: 30px;
+  border-top: 4px solid #c9a227;
+}
+
+.btn-gold {
+  background: #c9a227;
+  color: white;
+  border: none;
+}
+
+.btn-gold:hover {
+  background: #a98618;
+}
+
+.table-poster {
+  width: 45px;
+  height: 60px;
+  object-fit: cover;
+}

@@ -1,0 +1,126 @@
+<section class="container py-5">
+
+  @if (loading) {
+
+    <div class="text-center py-5">
+
+      <div class="spinner-border"></div>
+
+    </div>
+
+  }
+
+
+  @if (movie) {
+
+    <div class="row g-5">
+
+      <div class="col-md-5">
+
+        <img
+          [src]="movie.image || 'assets/movie-placeholder.jpg'"
+          [alt]="movie.title"
+          class="movie-poster"
+        >
+
+      </div>
+
+
+      <div class="col-md-7">
+
+        <p class="gold-text">
+          {{ movie.genreId.name }}
+        </p>
+
+        <h1>
+          {{ movie.title }}
+        </h1>
+
+        <div class="rating">
+          ⭐ {{ movie.rating }}/10
+        </div>
+
+        <hr>
+
+        <p class="lead">
+          {{ movie.description }}
+        </p>
+
+        <div class="movie-details">
+
+          <p>
+            <strong>Release Year:</strong>
+            {{ movie.releaseYear }}
+          </p>
+
+          <p>
+            <strong>Director:</strong>
+            {{ movie.director }}
+          </p>
+
+          <p>
+            <strong>Duration:</strong>
+            {{ movie.duration }} minutes
+          </p>
+
+          <p>
+            <strong>Cast:</strong>
+            {{ movie.cast.join(', ') }}
+          </p>
+
+          <p>
+            <strong>Available Copies:</strong>
+            {{ movie.availableCopies }}
+          </p>
+
+        </div>
+
+        <div class="rental-box">
+
+          <span>
+            Rental Price
+          </span>
+
+          <strong>
+            R{{ movie.rentalPrice }}
+          </strong>
+
+        </div>
+
+
+        @if (message) {
+
+          <div class="alert alert-success">
+            {{ message }}
+          </div>
+
+        }
+
+
+        @if (movie.availableCopies > 0) {
+
+          <button
+            class="btn btn-gold btn-lg"
+            (click)="addToCart()"
+          >
+            Add to Cart
+          </button>
+
+        } @else {
+
+          <button
+            class="btn btn-secondary btn-lg"
+            disabled
+          >
+            Currently Unavailable
+          </button>
+
+        }
+
+      </div>
+
+    </div>
+
+  }
+
+</section>

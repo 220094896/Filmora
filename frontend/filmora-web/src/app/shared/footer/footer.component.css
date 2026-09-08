@@ -1,0 +1,20 @@
+.filmora-footer {
+  background: #343434;
+  color: white;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.filmora-footer h4 {
+  color: #c9a227;
+  letter-spacing: 3px;
+}
+
+.filmora-footer hr {
+  border-color: #666;
+}
+
+.copyright {
+  color: #aaa;
+  font-size: 14px;
+}

@@ -1,0 +1,25 @@
+.auth-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.auth-card {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.btn-gold {
+  background: #c9a227;
+  color: white;
+  border: none;
+}
+
+a {
+  color: #c9a227;
+}
