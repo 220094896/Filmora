@@ -52,4 +52,18 @@ The backend uses an in-memory MongoDB instance automatically when no MONGODB_URI
 - GET /api/rentals
 
 ## Documentation
-Additional project details are in the documentation folder.
+Integration & QA (Member 4) deliverables live in the `documentation/` folder:
+
+- **Submission overview:** `documentation/member4-integration-qa-submission.md`
+- **API reference:** `documentation/api-documentation.md`
+- **Test plan:** `documentation/test-plan.md`
+- **Setup guide:** `documentation/integration-setup.md`
+- **Test report:** `documentation/integration-test-report.md`
+- **Postman:** `documentation/postman/`
+
+### Run API integration tests
+```powershell
+cd backend
+npm install
+npm test
+```
