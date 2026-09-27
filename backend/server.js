@@ -1,22 +1,33 @@
-const dotenv = require('dotenv');
+const app = require('./app');
 const connectDB = require('./config/db');
-const createApp = require('./app');
+const movieRoutes = require('./routes/movieRoutes');
+const rentalRoutes = require('./routes/rentalRoutes');
+
+const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 
+const app = express();
+
+connectDB();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/movies', movieRoutes);
+app.use('/api/rentals', rentalRoutes);
+
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Movie Rental API is running'
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 
-const startServer = async () => {
-  await connectDB();
-
-  const app = createApp();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-};
-
-if (require.main === module) {
-  startServer();
-}
-
-module.exports = { startServer };
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
